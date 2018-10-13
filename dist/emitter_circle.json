@@ -1,0 +1,13 @@
+{
+    "emitters": [
+        {
+            "emission": {
+                "shape": "circle",
+                "radius": 50,
+                "emitOnEdge": true,
+                "frequency": 1000,
+                "density": 3
+            }
+        }
+    ]
+}

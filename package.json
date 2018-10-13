@@ -1,0 +1,18 @@
+{
+  "name": "ParticleSystem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ParticleSystem.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  }
+}

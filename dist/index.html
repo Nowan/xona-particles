@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="./pixi.js"></script>
+        <script src="./legio.js"></script>
+    </head>
+    <body>
+            <canvas id="workspace" width="512" height="512"></canvas>
+            <script>var workspace = document.getElementById("workspace");
+
+                var app = new PIXI.Application({
+                    view: workspace,
+                    width: workspace.width,
+                    height: workspace.height
+                });
+
+                PIXI.loader.add('legioConfig', 'emitter_circle.json').load(function (loader, resources) {
+                    const particleSystem = new LEGIO.ParticleSystem(resources.legioConfig.data);
+                    //const pixiParticleSystem = createPixiParticleSystem(particleSystem);
+                });
+                /*
+
+            function createPixiParticleSystem(particleSystem) {
+                const pixiParticleSystem = new PIXI.Container();
+                for (let emitter of particleSystem._emitters) {
+                    pixiParticleSystem.addChild(createPixiEmitter(emitter));
+                }
+                return app.stage.addChild(pixiParticleSystem);
+            }
+
+            function createPixiEmitter(emitter) {
+                const pixiEmitter = new PIXI.Container();
+                for (let particle of emitter._particles) {
+                    pixiEmitter.addChild(createPixiParticle(particle));
+                }
+                return pixiEmitter;
+            }
+           
+            function createPixiParticle(particle) {
+                const pixiParticle = new PIXI.Graphics();
+                pixiParticle.beginFill(0xffffff);
+                pixiParticle.drawCircle(particle.x, particle.y, 2);
+                pixiParticle.endFill();
+                return pixiParticle;
+            };
+*/</script>
+    </body>
+</html>
