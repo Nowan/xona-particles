@@ -1,11 +1,11 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/index.js',
   output: {
-    filename: 'legio.js',
+    filename: 'nani.js',
     path: path.resolve(__dirname, 'dist'),
-    library: 'LEGIO',
+    library: 'Nani',
     libraryTarget: 'var'
   }
 };

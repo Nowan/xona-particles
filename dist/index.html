@@ -1,25 +1,21 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <script src="./pixi.js"></script>
-        <script src="./legio.js"></script>
+        <script src="pixi.js"></script>
+        <script src="nani.js"></script>
     </head>
     <body>
-            <canvas id="workspace" width="512" height="512"></canvas>
-            <script>var workspace = document.getElementById("workspace");
-
-                var app = new PIXI.Application({
-                    view: workspace,
-                    width: workspace.width,
-                    height: workspace.height
-                });
-
-                PIXI.loader.add('legioConfig', 'emitter_circle.json').load(function (loader, resources) {
-                    const particleSystem = new LEGIO.ParticleSystem(resources.legioConfig.data);
-                    //const pixiParticleSystem = createPixiParticleSystem(particleSystem);
-                });
-                /*
-
+        <canvas id="workspace" width="512" height="512"></canvas>
+        <script>
+            const workspace = document.getElementById("workspace");
+	        const app = new PIXI.Application({view: workspace, width: workspace.width, height: workspace.height});
+            
+            PIXI.loader.add('legioConfig', 'emitter_circle.json').load(function(loader, resources) {
+                const particleSystem = new Nani.ParticleSystem(resources.legioConfig.data);
+                const pixiParticleSystem = createPixiParticleSystem(particleSystem);
+                pixiParticleSystem.position.set(app.renderer.width * 0.5, app.renderer.height * 0.5);
+            });
+            
             function createPixiParticleSystem(particleSystem) {
                 const pixiParticleSystem = new PIXI.Container();
                 for (let emitter of particleSystem._emitters) {
@@ -43,6 +39,7 @@
                 pixiParticle.endFill();
                 return pixiParticle;
             };
-*/</script>
+
+        </script>
     </body>
 </html>
