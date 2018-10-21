@@ -1,11 +1,8 @@
-const ParticleSystem = require("./ParticleSystem");
-const ParticleEmitter = require("./ParticleEmitter");
-const Particle = require("./Particle");
-const EmissionArea = require("./EmissionArea");
+require("seedrandom");
 
 module.exports = {
-    ParticleSystem: ParticleSystem,
-    ParticleEmitter: ParticleEmitter,
-    Particle: Particle,
-    EmissionArea: EmissionArea
+    ParticleSystem: require("./ParticleSystem"),
+    ParticleEmitter: require("./ParticleEmitter"),
+    Particle: require("./Particle"),
+    EmissionArea: require("./EmissionArea")
 };

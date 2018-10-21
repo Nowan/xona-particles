@@ -21,8 +21,8 @@ module.exports = {
     rules: [
       {
 				test: /\.json$/,
-				include: path.join(__dirname, 'node_modules', 'pixi.js'),
-				loader: 'json',
+				include: path.join(__dirname, 'node_modules', 'seedrandom'),
+				loader: 'json-loader',
       },
       {
         test: /\.js$/,
@@ -31,9 +31,14 @@ module.exports = {
       },
       {
         enforce: 'post',
-        include: path.join(__dirname, 'node_modules', 'pixi.js'),
-        loader: 'transform?brfs'
+        include: path.join(__dirname, 'node_modules', 'seedrandom'),
+        loader: 'transform-loader?brfs'
       }
    ]
+  },
+  resolve: {
+    alias: {
+        'seedrandom': path.join(__dirname, 'node_modules', 'seedrandom', 'seedrandom.min.js')
+    }
   }
 };

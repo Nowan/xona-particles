@@ -17,6 +17,8 @@
 	        const app = new PIXI.Application({view: workspace, width: workspace.width, height: workspace.height});
             let pixiParticleSystem;
             let startTime = 0;
+            
+            console.log(Math.seedrandom);
 
             PIXI.loader.add('legioConfig', 'emitter_circle.json').load(function(loader, resources) {
                 pixiParticleSystem = app.stage.addChild(new PixiParticleSystem(resources.legioConfig.data));
