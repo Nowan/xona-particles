@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Xona Particle Engine</title>
+        <script src="pixi.min.js"></script>
+        <script src="xonaparticles.js"></script>
+        <script src="pixi/PixiParticle.js"></script>
+        <script src="pixi/PixiParticleEmitter.js"></script>
+        <script src="pixi/PixiParticleSystem.js"></script>
+    </head>
+    <body>
+        <canvas id="workspace" width="512" height="512"></canvas>
+        <script>
+            const workspace = document.getElementById("workspace");
+
+	        const app = new PIXI.Application({view: workspace, width: workspace.width, height: workspace.height});
+            let pixiParticleSystem;
+            let startTime = 0;
+
+            PIXI.loader.add('legioConfig', 'emitter_circle.json').load(function(loader, resources) {
+                pixiParticleSystem = app.stage.addChild(new PixiParticleSystem(resources.legioConfig.data));
+                pixiParticleSystem.position.set(app.renderer.width * 0.5, app.renderer.height * 0.5);
+
+                window.requestAnimationFrame(function(elapsedTime) {
+                    startTime = elapsedTime;
+                    step(elapsedTime);
+                });
+            });
+            
+            function step(elapsedTime) {
+                pixiParticleSystem.step(elapsedTime - startTime);
+                window.requestAnimationFrame(step);
+            }
+            
+        </script>
+    </body>
+</html>

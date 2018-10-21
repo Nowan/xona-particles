@@ -6,13 +6,18 @@ const Particle = require("./Particle.js");
 class ParticleEmitter {
 
 	constructor(config = ParticleEmitter.DEFAULT_CONFIG) {
+		this._initialize(config);
+	}
+
+	step(time) {
+		if (time % 500 <= 20) {
+            this._spawnParticle();
+        }
+	}
+
+	_initialize(config) {
 		this._parseConfig(config);
-
 		this._particles = [];
-
-		for (var i = 0; i < 100; i++) {
-			this._spawnParticle();
-		}
 	}
 
 	_parseConfig(config) {

@@ -3,12 +3,16 @@
 class Particle {
     
     constructor(point) {
-        this.setPosition(point.x, point.y);
+        this._initialize(point);
     }
 
     setPosition(x, y) {
         this.x = x;
         this.y = y;
+    }
+
+    _initialize(point) {
+        this.setPosition(point.x, point.y);
     }
 }
 
