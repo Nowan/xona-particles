@@ -5,27 +5,41 @@ const Particle = require("./Particle.js");
 
 class ParticleEmitter {
 
-	constructor(config = ParticleEmitter.DEFAULT_CONFIG) {
+	constructor(config) {
 		this._initialize(config);
 	}
 
 	step(time) {
-		if (time % 500 <= 20) {
-            this._spawnParticle();
-        }
+		
 	}
 
-	_initialize(config) {
+	_initialize(config = ParticleEmitter.DEFAULT_CONFIG) {
 		this._parseConfig(config);
 		this._particles = [];
+		this._getParticlesCountInTimestep(5000);
 	}
 
 	_parseConfig(config) {
-		this._parseEmission(config.emission);
+		this._emissionArea = EmissionArea.create(config.emission);
+		this._frequency = config.emission.frequency;
+		this._density = config.emission.density;
+		this._lifetime = config.lifetime;
 	}
 
-	_parseEmission(emissionConfig) {
-		this._emissionArea = EmissionArea.create(emissionConfig);
+	_getParticlesCountInTimestep(timestep) {
+		let particlesCount = 0;
+		const precedingEmissionsCount = this._lifetime.max / this._frequency;
+		console.log("PRECEDING EMISSIONS COUNT: " + precedingEmissionsCount);
+		for (let i = 0; i < precedingEmissionsCount; i++) {
+			const emissionDensity = this._density.min + Math.floor(Math.random() * (this._density.max - this._density.min));
+			console.log("EMISSION " + i + " DENSITY: " + emissionDensity);
+			for (let j = 0; j < emissionDensity; j++) {
+				const particleLifetime = this._lifetime.min + Math.floor(Math.random() * (this._lifetime.max - this._lifetime.min));
+				particlesCount += Math.floor(particleLifetime / this._frequency);
+				console.log("PARTICLE " + j + " LIFETIME: " + particleLifetime + " OUTLIVES " + (Math.floor(particleLifetime / this._frequency)) + " EMISSIONS");
+			}
+		}
+		console.log("PARTICLES COUNT IN " + timestep + " TIMESTEP: " + particlesCount);
 	}
 
 	_spawnParticle() {

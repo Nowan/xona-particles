@@ -5,7 +5,16 @@
                 "shape": "rectangle",
                 "width": 150,
                 "height": 50,
+                "frequency": 1000,
+                "density": {
+                    "min": 1,
+                    "max": 5
+                },
                 "emitOnEdge": true
+            },
+            "lifetime": {
+                "min": 1000,
+                "max": 3000
             }
         }
     ]

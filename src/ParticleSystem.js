@@ -4,7 +4,7 @@ const ParticleEmitter = require("./ParticleEmitter.js");
 
 class ParticleSystem {
 
-	constructor(config = ParticleSystem.DEFAULT_CONFIG) {
+	constructor(config) {
 		this._initialize(config);
 	}
 
@@ -14,7 +14,7 @@ class ParticleSystem {
 		}, this);
 	}
 
-	_initialize(config) {
+	_initialize(config = ParticleSystem.DEFAULT_CONFIG) {
 		this._emitters = config.emitters.map(this._createEmitter, this);
 	}
 

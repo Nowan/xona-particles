@@ -4,9 +4,16 @@
             "emission": {
                 "shape": "circle",
                 "radius": 50,
-                "emitOnEdge": true,
                 "frequency": 1000,
-                "density": 3
+                "density": {
+                    "min": 1,
+                    "max": 5
+                },
+                "emitOnEdge": true
+            },
+            "lifetime": {
+                "min": 1000,
+                "max": 3000
             }
         }
     ]

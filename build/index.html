@@ -17,23 +17,24 @@
 	        const app = new PIXI.Application({view: workspace, width: workspace.width, height: workspace.height});
             let pixiParticleSystem;
             let startTime = 0;
-            
-            console.log(Math.seedrandom);
 
             PIXI.loader.add('legioConfig', 'emitter_circle.json').load(function(loader, resources) {
                 pixiParticleSystem = app.stage.addChild(new PixiParticleSystem(resources.legioConfig.data));
                 pixiParticleSystem.position.set(app.renderer.width * 0.5, app.renderer.height * 0.5);
-
+                /*
                 window.requestAnimationFrame(function(elapsedTime) {
                     startTime = elapsedTime;
                     step(elapsedTime);
                 });
+                */
             });
             
+            /*
             function step(elapsedTime) {
                 pixiParticleSystem.step(elapsedTime - startTime);
                 window.requestAnimationFrame(step);
             }
+            */
             
         </script>
     </body>
